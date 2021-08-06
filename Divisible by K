@@ -1,0 +1,18 @@
+class Solution {
+    public int subarraysDivByK(int[] A, int K) {
+        int[] remainderArray=new int[K];
+        remainderArray[0]=1;
+        
+        int sum=0,count=0;
+        
+        for(int a: A){
+            sum=(sum+a)%K;
+            if(sum<0)sum+=K;
+            
+            
+            count +=remainderArray[sum];
+            remainderArray[sum]++;
+        }
+        return count;
+    }
+}
